@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhotoSketch — Turn your photo into art</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="nav">
+  <a href="#home" class="nav__logo">
+    <span class="nav__logo-mark">✎</span>
+    <span>Photo<em>Sketch</em></span>
+  </a>
+  <nav class="nav__links">
+    <a href="#home">Home</a>
+    <a href="#examples">Examples</a>
+    <a href="#create">Create</a>
+    <a href="#gallery">Gallery</a>
+  </nav>
+  <a href="#create" class="nav__cta">Get started →</a>
+</header>
+
+<section id="home" class="section hero">
+  <div class="hero__scribble" aria-hidden="true">
+    <svg viewBox="0 0 600 300" fill="none">
+      <path id="scribble-path" d="M20,220 C120,40 220,300 320,120 S520,20 580,140" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="600" y2="0">
+          <stop offset="0%" stop-color="#E3A6B8"/>
+          <stop offset="100%" stop-color="#E9C99B"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <p class="hero__eyebrow">for artists · beginners · curious minds</p>
+  <h1 class="hero__title">Every photo<br>hides a <em>sketch</em> inside.</h1>
+  <p class="hero__subtitle">
+    Upload a photo from your computer, or snap one straight from your phone or tablet —
+    PhotoSketch turns it into pencil art in just a few seconds.
+    No Photoshop, no experience needed, no waiting.
+  </p>
+  <div class="hero__actions">
+    <a href="#create" class="btn btn--primary">Make your first sketch</a>
+    <a href="#examples" class="btn btn--ghost">See examples</a>
+  </div>
+
+  <div class="hero__stats">
+    <div><strong>4</strong><span>sketch styles</span></div>
+    <div><strong>&lt;5s</strong><span>to get a result</span></div>
+    <div><strong>∞</strong><span>saved in your gallery</span></div>
+  </div>
+
+  <a href="#examples" class="scroll-cue" aria-label="Scroll down">
+    <span></span>
+  </a>
+</section>
+
+<section id="examples" class="section examples">
+  <p class="section__eyebrow">before & after</p>
+  <h2 class="section__title">Four ways to tell<br>the same photo.</h2>
+  <p class="section__lead">Hover (or tap) over each card to see the pencil result.</p>
+
+  <div class="showcase-grid">
+    <article class="showcase-card">
+      <div class="showcase-card__imgwrap">
+        <img class="showcase-card__before" src="{{ url_for('static', filename='examples/img1.jpg') }}" alt="Original photo">
+        <img class="showcase-card__after" src="{{ url_for('static', filename='examples/img1_classic_pencil_sketch.png') }}" alt="Classic pencil sketch">
+      </div>
+      <h3>Classic Pencil Sketch</h3>
+      <p>A soft grayscale sketch with a realistic, hand-drawn feel — the closest to real pencil on paper.</p>
+    </article>
+
+    <article class="showcase-card">
+      <div class="showcase-card__imgwrap">
+        <img class="showcase-card__before" src="{{ url_for('static', filename='examples/img3.png') }}" alt="Original photo">
+        <img class="showcase-card__after" src="{{ url_for('static', filename='examples/img3_dark_sketch.png') }}" alt="Dark sketch">
+      </div>
+      <h3>Dark Sketch</h3>
+      <p>Bolder, higher-contrast strokes for a dramatic, expressive look — great for portraits with character.</p>
+    </article>
+
+    <article class="showcase-card">
+      <div class="showcase-card__imgwrap">
+        <img class="showcase-card__before" src="{{ url_for('static', filename='examples/img5.png') }}" alt="Original photo">
+        <img class="showcase-card__after" src="{{ url_for('static', filename='examples/img5_soft_sketch.png') }}" alt="Soft sketch">
+      </div>
+      <h3>Soft Sketch</h3>
+      <p>Gently blurred lines with a dreamy feel — perfect for landscapes and romantic shots.</p>
+    </article>
+
+    <article class="showcase-card">
+      <div class="showcase-card__imgwrap">
+        <img class="showcase-card__before" src="{{ url_for('static', filename='examples/img6.png') }}" alt="Original photo">
+        <img class="showcase-card__after" src="{{ url_for('static', filename='examples/img6_edge_sketch.png') }}" alt="Edge sketch">
+      </div>
+      <h3>Edge Sketch (Canny)</h3>
+      <p>Clean, graphic lines that trace only the object's edges — a modern, minimalist style.</p>
+    </article>
+  </div>
+</section>
+
+<section id="create" class="section create">
+  <p class="section__eyebrow">your turn</p>
+  <h2 class="section__title">Upload a photo, pick a style,<br>done.</h2>
+
+  <div class="create__layout">
+
+    <div class="panel" id="panel-upload">
+      <h3 class="panel__step">Step 1 — Your photo</h3>
+      <label id="dropzone" class="dropzone" for="file-input">
+        <div class="dropzone__icon">🖼️</div>
+        <p><strong>Drag and drop</strong> an image here</p>
+        <p class="dropzone__or">or click to choose from your computer / phone camera</p>
+        <input type="file" id="file-input" accept="image/*" hidden>
+      </label>
+      <div id="preview-wrap" class="preview-wrap hidden">
+        <img id="preview-img" alt="Preview">
+        <button type="button" id="preview-remove" class="link-btn">✕ Remove image</button>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-style">
+      <h3 class="panel__step">Step 2 — Choose a sketch type</h3>
+      <div class="style-grid">
+        {% for key, label in styles.items() %}
+        <label class="style-card">
+          <input type="radio" name="style" value="{{ key }}" {% if loop.first %}checked{% endif %}>
+          <div class="style-card__body">
+            <span class="style-card__title">{{ label }}</span>
+            <span class="style-card__desc">
+              {% if key == 'classic' %}Natural, realistic pencil texture — a great all-round choice.
+              {% elif key == 'dark' %}Bolder, higher-contrast strokes for a dramatic, expressive effect.
+              {% elif key == 'soft' %}Smoothly blurred lines, a gentle and dreamy look.
+              {% elif key == 'edge' %}Only clean object outlines, graphic and modern.
+              {% endif %}
+            </span>
+          </div>
+        </label>
+        {% endfor %}
+      </div>
+
+      <div id="intensity-wrap" class="intensity-wrap">
+        <span class="panel__label">Stroke intensity</span>
+        <div class="intensity-grid">
+          <label class="chip"><input type="radio" name="intensity" value="1"> Light</label>
+          <label class="chip"><input type="radio" name="intensity" value="2" checked> Medium</label>
+          <label class="chip"><input type="radio" name="intensity" value="3"> Strong</label>
+        </div>
+      </div>
+
+      <button id="btn-generate" class="btn btn--primary btn--wide" disabled>
+        <span id="btn-generate-label">Upload a photo first</span>
+      </button>
+      <p class="create__hint">Your sketch is automatically saved to the gallery below. 🎨</p>
+    </div>
+
+    <div class="panel panel--result" id="panel-result">
+      <h3 class="panel__step">Result</h3>
+      <div id="result-empty" class="result-empty">
+        <p>Your finished sketch will appear here ✨</p>
+      </div>
+      <div id="result-loading" class="result-loading hidden">
+        <div class="spinner"></div>
+        <p>Sketching...</p>
+      </div>
+      <div id="result-ready" class="result-ready hidden">
+        <img id="result-img" alt="Finished sketch">
+        <div class="result-ready__actions">
+          <a id="result-download" class="btn btn--ghost btn--small" download>⬇ Download</a>
+          <button id="result-new" type="button" class="btn btn--primary btn--small">🖌 New sketch</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="section gallery">
+  <p class="section__eyebrow">your collection</p>
+  <h2 class="section__title">Your Gallery</h2>
+  <p class="section__lead">Every sketch you've made on this device — always here, always yours.</p>
+
+  <div id="gallery-empty" class="gallery-empty">
+    <p>No sketches yet. <a href="#create">Make your first one →</a></p>
+  </div>
+  <div id="gallery-grid" class="gallery-grid"></div>
+</section>
+
+<footer class="footer">
+  <div class="footer__logo">
+    <span class="nav__logo-mark">✎</span> PhotoSketch
+  </div>
+  <p class="footer__line">
+    2026 &nbsp;|&nbsp;
+    <a href="https://www.linkedin.com/in/milajovanovsska/" target="
