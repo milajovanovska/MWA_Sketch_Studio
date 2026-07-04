@@ -20,7 +20,6 @@
   </nav>
   <a href="#create" class="nav__cta">Get started →</a>
 </header>
-
 <section id="home" class="section hero">
   <div class="hero__scribble" aria-hidden="true">
     <svg viewBox="0 0 600 300" fill="none">
@@ -56,7 +55,6 @@
     <span></span>
   </a>
 </section>
-
 <section id="examples" class="section examples">
   <p class="section__eyebrow">before & after</p>
   <h2 class="section__title">Four ways to tell<br>the same photo.</h2>
@@ -87,4 +85,126 @@
         <img class="showcase-card__after" src="{{ url_for('static', filename='examples/results/img5_soft_sketch.png') }}" alt="Soft sketch">
       </div>
       <h3>Soft Sketch</h3>
-      <p>Gently blurred lines with a dreamy feel- perfect for landscapes and
+      <p>Gently blurred lines with a dreamy feel- perfect for landscapes and portraits with a gentle mood.</p>
+    </article>
+
+    <article class="showcase-card">
+      <div class="showcase-card__imgwrap">
+        <img class="showcase-card__before" src="{{ url_for('static', filename='examples/examples/img6.png') }}" alt="Original photo">
+        <img class="showcase-card__after" src="{{ url_for('static', filename='examples/results/img6_edge_sketch_(canny).png') }}" alt="Edge sketch">
+      </div>
+      <h3>Edge Sketch (Canny)</h3>
+      <p>Clean, high-contrast outlines with no shading- built purely from detected edges.</p>
+    </article>
+  </div>
+</section>
+<section id="create" class="section create">
+  <p class="section__eyebrow">create</p>
+  <h2 class="section__title">Turn your photo<br>into a sketch.</h2>
+  <p class="section__lead">Upload a picture from your device, choose a style, and generate your sketch.</p>
+
+  <div class="create__layout">
+    <div class="panel" id="panel-upload">
+      <p class="panel__step">Step 1 - Add your photo</p>
+      <span class="panel__label">Upload from your device or gallery</span>
+
+      <div class="dropzone" id="dropzone">
+        <span>Click to browse, or drag a photo here</span>
+        <span class="dropzone__or">JPG - PNG - WEBP - BMP</span>
+      </div>
+      <input type="file" id="file-input" accept="image/png, image/jpeg, image/webp, image/bmp" hidden>
+
+      <div class="preview-wrap hidden" id="preview-wrap">
+        <img id="preview-img" alt="Selected photo preview">
+        <button type="button" class="btn btn--ghost" id="preview-remove">Remove photo</button>
+      </div>
+    </div>
+    <div class="panel">
+      <p class="panel__step">Step 2 - Pick a style</p>
+      <span class="panel__label">Sketch style</span>
+
+      <div class="style-grid">
+        <label class="style-card">
+          <input type="radio" name="style" value="classic" checked>
+          <span class="style-card__body">
+            <span class="style-card__title">Classic Pencil Sketch</span>
+            <span class="style-card__desc">Soft grayscale lines, close to real pencil on paper.</span>
+          </span>
+        </label>
+        <label class="style-card">
+          <input type="radio" name="style" value="dark">
+          <span class="style-card__body">
+            <span class="style-card__title">Dark Sketch</span>
+            <span class="style-card__desc">Bolder, high-contrast strokes for a dramatic look.</span>
+          </span>
+        </label>
+        <label class="style-card">
+          <input type="radio" name="style" value="soft">
+          <span class="style-card__body">
+            <span class="style-card__title">Soft Sketch</span>
+            <span class="style-card__desc">Gently blurred lines with a dreamy, soft feel.</span>
+          </span>
+        </label>
+        <label class="style-card">
+          <input type="radio" name="style" value="edge">
+          <span class="style-card__body">
+            <span class="style-card__title">Edge Sketch (Canny)</span>
+            <span class="style-card__desc">Clean outline art built purely from detected edges.</span>
+          </span>
+        </label>
+      </div>
+
+      <div class="intensity-wrap" id="intensity-wrap">
+        <span class="panel__label">Blur intensity</span>
+        <div class="intensity-grid">
+          <label class="chip"><input type="radio" name="intensity" value="1"> Light</label>
+          <label class="chip"><input type="radio" name="intensity" value="2" checked> Medium</label>
+          <label class="chip"><input type="radio" name="intensity" value="3"> Bold</label>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn--primary" id="btn-generate" disabled style="width:100%">
+        <span id="btn-generate-label">Upload a photo first</span>
+      </button>
+      <p class="create__hint">The sketch is generated on the server and saved automatically to your gallery below.</p>
+    </div>
+    <div class="panel panel--result">
+      <p class="panel__step">Step 3 - Your sketch</p>
+
+      <div class="result-empty" id="result-empty">
+        <p>Your result will appear here once you generate a sketch.</p>
+      </div>
+      <div class="result-loading hidden" id="result-loading">
+        <div class="spinner"></div>
+        <p>Sketching your photo...</p>
+      </div>
+      <div class="result-ready hidden" id="result-ready">
+        <img id="result-img" alt="Generated sketch">
+        <div class="result-ready__actions">
+          <a class="btn btn--ghost" id="result-download" download>Download</a>
+          <button type="button" class="btn btn--primary" id="result-new">Make another</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="gallery" class="section gallery">
+  <p class="section__eyebrow">your gallery</p>
+  <h2 class="section__title">Every sketch<br>you've made.</h2>
+  <p class="section__lead">Saved on this device- download or delete anytime.</p>
+
+  <div class="gallery-empty hidden" id="gallery-empty">
+    No sketches yet. <a href="#create">Make your first one →</a>
+  </div>
+  <div class="gallery-grid" id="gallery-grid"></div>
+</section>
+<footer class="footer">
+  <div class="footer__logo">MWA Sketch Studio</div>
+  <p class="footer__line">Made with care by <a  href="https://www.linkedin.com/in/milajovanovsska/">Mila Jovanovska</a> · Photo Sketching Web</p>
+</footer>
+
+<div class="toast hidden" id="toast"></div>
+
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
