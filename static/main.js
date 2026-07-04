@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let selectedFile = null;
 
+  dropzone.addEventListener("click", () => fileInput.click());
+
   fileInput.addEventListener("change", () => {
     if (fileInput.files && fileInput.files[0]) {
       setSelectedFile(fileInput.files[0]);
@@ -155,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
     }
   }
-  
+
   const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
   if (isTouchDevice) {
