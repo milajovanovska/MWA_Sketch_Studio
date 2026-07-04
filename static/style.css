@@ -364,3 +364,29 @@ a{ color:inherit; text-decoration:none; }
   .hero__actions .btn{ width:100%; }
   .hero__stats{ gap:30px; }
 }
+
+.rights__box{
+  max-width:640px; margin:0 auto; text-align:center;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg);
+  padding:40px 32px; box-shadow:var(--shadow-soft);
+}
+.rights__mark{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:36px; height:36px; border-radius:50%;
+  border:1px solid var(--accent-rose); color:var(--accent-rose);
+  font-weight:700; margin-bottom:16px;
+}
+.rights__title{
+  font-size:1.4rem; margin-bottom:14px;
+}
+.rights__text{
+  font-size:.92rem; line-height:1.7; color:var(--text-low);
+  max-width:520px; margin:0 auto 14px;
+}
+.rights__text:last-child{ margin-bottom:0; }
+
+.footer__logo a{ transition:color .25s; }
+.footer__logo a:hover{ color:var(--accent-rose); text-decoration:underline; }
+
+.rights__text a{ color:var(--accent-rose); font-weight:700; }
+.rights__text a:hover{ text-decoration:underline; }
