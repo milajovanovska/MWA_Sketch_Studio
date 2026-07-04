@@ -155,6 +155,33 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
     }
   }
+  
+  const isTouchDevice = window.matchMedia("(hover: none)").matches;
+
+  if (isTouchDevice) {
+    const showcaseCards = document.querySelectorAll(".showcase-card");
+
+    showcaseCards.forEach(card => {
+      card.addEventListener("click", (e) => {
+        if (!card.classList.contains("is-flipped")) {
+          e.preventDefault();
+          showcaseCards.forEach(c => {
+            if (c !== card) c.classList.remove("is-flipped");
+          });
+          card.classList.add("is-flipped");
+        }
+      });
+    });
+
+    const resetFlippedCards = () => {
+      showcaseCards.forEach(c => c.classList.remove("is-flipped"));
+    };
+
+    window.addEventListener("pageshow", resetFlippedCards);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") resetFlippedCards();
+    });
+  }
 
   function addToGalleryGrid(entry, prepend) {
     galleryEmpty.classList.add("hidden");
