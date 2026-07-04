@@ -57,45 +57,53 @@
 </section>
 <section id="examples" class="section examples">
   <p class="section__eyebrow">before & after</p>
-  <h2 class="section__title">Four ways to tell<br>the same photo.</h2>
-  <p class="section__lead">Hover (or tap) over each card to see the pencil result.</p>
+  <h2 class="section__title">Three ways to tell<br>the same photo.</h2>
+  <p class="section__lead">Hover (or tap) over each card to see the pencil result. Click a card to see it on Instagram.</p>
 
   <div class="showcase-grid">
-    <article class="showcase-card">
+    <a class="showcase-card" href="https://www.instagram.com/p/DV9Ce3YDKJx/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
       <div class="showcase-card__imgwrap">
         <img class="showcase-card__before" src="{{ url_for('static', filename='examples/examples/img1.jpg') }}" alt="Original photo">
         <img class="showcase-card__after" src="{{ url_for('static', filename='examples/results/img1_classic_pencil_sketch.png') }}" alt="Classic pencil sketch">
       </div>
       <h3>Classic Pencil Sketch</h3>
       <p>A soft grayscale sketch with a realistic, hand-drawn feel- the closest to real pencil on paper.</p>
-    </article>
+    </a>
 
-    <article class="showcase-card">
+    <a class="showcase-card" href="https://www.instagram.com/p/DQESVS5jDYY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
       <div class="showcase-card__imgwrap">
         <img class="showcase-card__before" src="{{ url_for('static', filename='examples/examples/img3.png') }}" alt="Original photo">
         <img class="showcase-card__after" src="{{ url_for('static', filename='examples/results/img3_dark_sketch.png') }}" alt="Dark sketch">
       </div>
       <h3>Dark Sketch</h3>
       <p>Bolder, higher-contrast strokes for a dramatic, expressive look- great for portraits with character.</p>
-    </article>
+    </a>
 
-    <article class="showcase-card">
+    <a class="showcase-card" href="https://www.instagram.com/p/DZAzC5iuGvZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
       <div class="showcase-card__imgwrap">
         <img class="showcase-card__before" src="{{ url_for('static', filename='examples/examples/img5.png') }}" alt="Original photo">
         <img class="showcase-card__after" src="{{ url_for('static', filename='examples/results/img5_soft_sketch.png') }}" alt="Soft sketch">
       </div>
       <h3>Soft Sketch</h3>
       <p>Gently blurred lines with a dreamy feel- perfect for landscapes and portraits with a gentle mood.</p>
-    </article>
+    </a>
+  </div>
 
-    <article class="showcase-card">
+  <div class="showcase-divider">
+    <span class="showcase-divider__line"></span>
+    <span class="showcase-divider__label">one-line sketch</span>
+    <span class="showcase-divider__line"></span>
+  </div>
+
+  <div class="showcase-single">
+    <a class="showcase-card showcase-card--solo" href="https://www.instagram.com/p/Cmv6d_YNhMU/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener">
       <div class="showcase-card__imgwrap">
-        <img class="showcase-card__before" src="{{ url_for('static', filename='examples/examples/img6.png') }}" alt="Original photo">
-        <img class="showcase-card__after" src="{{ url_for('static', filename='examples/results/img6_edge_sketch_(canny).png') }}" alt="Edge sketch">
+        <img class="showcase-card__before" src="{{ url_for('static', filename='examples/examples/img9.jpg') }}" alt="Original photo">
+        <img class="showcase-card__after" src="{{ url_for('static', filename='examples/results/img2_edge_sketch_(canny).png') }}" alt="Edge sketch">
       </div>
       <h3>Edge Sketch (Canny)</h3>
       <p>Clean, high-contrast outlines with no shading- built purely from detected edges.</p>
-    </article>
+    </a>
   </div>
 </section>
 <section id="create" class="section create">
@@ -200,7 +208,7 @@
 </section>
 <footer class="footer">
   <div class="footer__logo">MWA Sketch Studio</div>
-  <p class="footer__line">Made with care by <a  href="https://www.linkedin.com/in/milajovanovsska/">Mila Jovanovska</a> · Photo Sketching Web</p>
+  <p class="footer__line">Made with care by <a target="_blank" href="https://www.linkedin.com/in/milajovanovsska/">Mila Jovanovska</a> · Photo Sketching Web</p>
 </footer>
 
 <div class="toast hidden" id="toast"></div>
